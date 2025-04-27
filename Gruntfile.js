@@ -1,6 +1,6 @@
 'use strict';
 
-const FONTAWESOME_VERSION = '5.5.0';
+const FONTAWESOME_VERSION = '6.7.2';
 const jsBanner = `/*!
  * Font Awesome Icon Picker
  * https://farbelous.github.io/fontawesome-iconpicker/
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                 src: [
                     'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/' +
                     FONTAWESOME_VERSION +
-                    '/advanced-options/metadata/icons.yml'
+                    '/metadata/icons.yml'
                 ],
                 dest: tempIconsFile
             },
@@ -40,24 +40,19 @@ module.exports = function(grunt) {
                             let icon = 'fa-' + key;
                             ele.styles.forEach(function(style) {
                                 style = style.toLowerCase();
-                                if (style.startsWith('brand')) {
+                                if (style.startsWith('solid')) {
                                     targetJSON.icons.push({
-                                        title: 'fab ' + icon,
-                                        searchTerms: ele.search.terms
-                                    });
-                                } else if (style.startsWith('solid')) {
-                                    targetJSON.icons.push({
-                                        title: 'fas ' + icon,
+                                        title: 'fa-solid ' + icon,
                                         searchTerms: ele.search.terms
                                     });
                                 } else if (style.startsWith('regular')) {
                                     targetJSON.icons.push({
-                                        title: 'far ' + icon,
+                                        title: 'fa-regular ' + icon,
                                         searchTerms: ele.search.terms
                                     });
                                 } else if (style.startsWith('light')) {
                                     targetJSON.icons.push({
-                                        title: 'fal ' + icon,
+                                        title: 'fa-light ' + icon,
                                         searchTerms: ele.search.terms
                                     });
                                 }
